@@ -1,10 +1,7 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
-// import  store  from '../store'
-
-
-
+import store from '../store'
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation;
@@ -14,7 +11,7 @@ import routes from './routes'
  * with the Router instance.
  */
 
-export default route(function ({ store /* , ssrContext */} ) {
+export default route(function (/* { store, ssrContext } */) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
     : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
@@ -27,21 +24,19 @@ export default route(function ({ store /* , ssrContext */} ) {
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
-
-
   })
   Router.beforeEach((to, from, next) => {
-    // if(to.matched.some(record => record.meta.requiresAuth)) {
-    //   if (store.getters.isLoggedIn) {
-    //     next()
-    //     return
-    //   }
-    //   next('/login')
-    // } else {
-    console.log(store.state)
-
+    // console.log(store().getters['showcase/isLoggedIn'])
+    if(to.matched.some(record => record.meta.requiresAuth)) {
+      if (store().getters['showcase/isLoggedIn']) {
+        next()
+        return
+      }
+      next('/login')
+    } else {
       next()
-    // }
+    }
   })
+
   return Router
 })

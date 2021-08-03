@@ -96,7 +96,7 @@ export default {
       // return false
       let email = this.email
       let password = this.password
-      this.$store.dispatch('login', { email, password })
+      this.$store.dispatch('showcase/login', { email, password })
         .then(() =>{
           this.$q.loading.hide()
           this.$router.push('/')

@@ -54,7 +54,7 @@
 
         <q-item
           clickable
-          v-if="!$store.getters.isLoggedIn"
+          v-if="!$store.getters['showcase/isLoggedIn']"
           to="login"
           exact
         >
@@ -77,7 +77,6 @@
 
         <q-item
           clickable
-          v-if="!$store.getters.isLoggedIn"
           exact
           to="registro"
         >
@@ -97,7 +96,7 @@
 
         <q-item
           clickable
-          v-if="$store.getters.isLoggedIn"
+          v-if="$store.getters['showcase/isLoggedIn']"
           @click="logout"
         >
           <q-item-section
@@ -207,7 +206,7 @@ export default defineComponent({
   methods:{
     logout(){
       this.$q.loading.show()
-      this.$store.dispatch('logout')
+      this.$store.dispatch('showcase/logout')
         .then(() => {
           this.$q.loading.hide()
           this.$router.push('/login')
