@@ -15,6 +15,7 @@ class CreateRegistrosTable extends Migration
     {
         Schema::create('registros', function (Blueprint $table) {
             $table->id();
+            $table->string('num');
             $table->string('ci');
             $table->string('contribuyente');
             $table->string('numero')->default('');
