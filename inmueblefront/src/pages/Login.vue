@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pt-md">
+  <q-page class="q-pa-md">
     <div class="row">
       <div class="col-12 col-md-2"></div>
       <div class="col-12 col-md-8">
@@ -26,6 +26,7 @@
                 :rules="[ val => val && val.length > 0 || 'Please type something']"
               />
               <q-input
+                autocomplete="on"
                 type="password"
                 filled
                 v-model="password"
@@ -78,45 +79,112 @@
 </template>
 
 <script>
-import { useQuasar } from 'quasar'
-import { useStore } from 'vuex'
-
 export default {
   data(){
-    return {
-      email : "admin@test.com",
-      password : "admin",
-      $q : useQuasar(),
-      $store : useStore()
+    return{
+      email:'admin@test.com',
+      password:'admin'
     }
   },
-  methods: {
-    login: function () {
+  methods:{
+    login(){
       this.$q.loading.show()
-      // return false
-      let email = this.email
-      let password = this.password
-      this.$store.dispatch('showcase/login', { email, password })
-        .then(() =>{
-          this.$q.loading.hide()
-          this.$router.push('/')
-        })
-        .catch(err => {
-          this.$q.loading.hide();
-          // console.log(err.response.data)
-          this.$q.notify({
-            message:err.response.data.res,
-            color:'red',
-            icon:'error'
+        this.$store.dispatch('login/login', { email:this.email, password:this.password })
+          .then(() =>{
+            this.$q.loading.hide()
+            this.$router.push('/')
           })
-        })
+          .catch(err => {
+            this.$q.loading.hide();
+            // console.log(err)
+            this.$q.notify({
+              message:err,
+              color:'red',
+              icon:'error'
+            })
+          })
     },
     onReset(){
-      this.email=null;
-      this.password=null;
+      this.email=''
+      this.password=''
     }
-  },
+  }
 }
+// import { defineComponent, ref } from 'vue'
+// import { useQuasar } from 'quasar'
+// import { useStore } from 'vuex'
+// import { useRouter } from 'vue-router'
+// export default defineComponent({
+//   name: 'MainLayout',
+//   setup () {
+//     const $store = useStore()
+//     const $q = useQuasar()
+//     const $router = useRouter()
+//     const email = ref("admin@test.com")
+//     const password = ref("admin")
+//     return {
+//       email,
+//       password,
+//       login () {
+//         $q.loading.show()
+//         // let email = this.email
+//         // let password = this.password
+//         // console.log(email.value)
+//         $store.dispatch('login/login', { email:email.value, password:password.value })
+//           .then(() =>{
+//             $q.loading.hide()
+//             $router.push('/')
+//           })
+//           .catch(err => {
+//             $q.loading.hide();
+//             // console.log(err)
+//             $q.notify({
+//               message:err,
+//               color:'red',
+//               icon:'error'
+//             })
+//           })
+//       },
+//       onReset(){
+//         this.email=null;
+//         this.password=null;
+//       }
+//     }
+//   }
+// })
+// export default {
+//   data(){
+//     return {
+//       email : "admin@test.com",
+//       password : "admin"
+//     }
+//   },
+//   methods: {
+//     login: function () {
+//       this.$q.loading.show()
+//       let email = this.email
+//       let password = this.password
+//       this.$store.dispatch('login', { email, password })
+//         .then(() =>{
+//           this.$q.loading.hide()
+//           this.$router.push('/')
+//         })
+//         .catch(err => {
+//           this.$q.loading.hide();
+//           // console.log(err.response.data)
+//           this.$q.notify({
+//             message:err.response.data.res,
+//             color:'red',
+//             icon:'error'
+//           })
+//         })
+//     },
+//     onReset(){
+//       this.email=null;
+//       this.password=null;
+//     }
+//   },
+// }
 </script>
 
 <style scoped>

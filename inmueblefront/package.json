@@ -1,5 +1,5 @@
 {
-  "name": "vehiculofront",
+  "name": "inmueblefront",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
   "productName": "Quasar App",
@@ -13,8 +13,12 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "datatables.net-buttons-dt": "^1.7.1",
+    "datatables.net-dt": "^1.1.0",
+    "jquery": "^3.6.0",
+    "jszip": "^3.7.0",
+    "pdfmake": "^0.2.2",
     "quasar": "^2.0.0",
-    "vue-i18n": "^9.0.0-beta.0",
     "vuex": "^4.0.1"
   },
   "devDependencies": {
