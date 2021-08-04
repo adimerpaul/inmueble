@@ -15,22 +15,22 @@ class CreateRegistrosTable extends Migration
     {
         Schema::create('registros', function (Blueprint $table) {
             $table->id();
-            $table->integer('num');
             $table->string('ci');
             $table->string('contribuyente');
-            $table->string('num27');
-            $table->string('numtramite');
-            $table->string('numhoja');
-            $table->string('lugar');
-            $table->string('tipo');
-            $table->date('fecha');
-            $table->time('hora');
-            $table->string('tipo2');
-            $table->string('tipo3');
-            $table->string('gestion');
-            $table->unsignedBigInteger('user_id');
+            $table->string('numero')->default('');
+            $table->string('numtramite')->default('');
+            $table->string('numhoja')->default('');
+            $table->string('lugar')->default('');
+            $table->string('tipo')->default('');//tramite
+            $table->date('fecha')->default('');
+            $table->time('hora')->nullable();
+            $table->string('tipo2')->default('NATURAL'); //natural/juridico
+            $table->string('tipo3')->default(''); //activo/baja
+            $table->string('gestion')->default('');
+            $table->string('detalle')->default('');
+            $table->unsignedBigInteger('user_id')->default('1');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('contribuyente_id');
+            $table->unsignedBigInteger('contribuyente_id')->default('1');
             $table->foreign('contribuyente_id')->references('id')->on('contribuyentes');
             $table->timestamps();
         });
