@@ -1,13 +1,13 @@
+import Login from '../pages/Login'
 import Registro from "pages/Registro";
-
 const routes = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: 'login', component: () => import('pages/Login.vue') },
-      {path: 'registro',component:Registro, meta: {requiresAuth: true}}
+      { path: 'login', component: Login },
+      { path: 'registro', component: Registro,meta: {requiresAuth: true} },
     ]
   },
 

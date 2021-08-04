@@ -28,7 +28,7 @@ export default route(function (/* { store, ssrContext } */) {
   Router.beforeEach((to, from, next) => {
     // console.log(store().getters['showcase/isLoggedIn'])
     if(to.matched.some(record => record.meta.requiresAuth)) {
-      if (store().getters['showcase/isLoggedIn']) {
+      if (store().getters['login/isLoggedIn']) {
         next()
         return
       }

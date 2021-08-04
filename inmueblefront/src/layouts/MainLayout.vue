@@ -32,7 +32,6 @@
         >
           Essential Links
         </q-item-label>
-
         <q-item
           clickable
           to="/"
@@ -45,18 +44,17 @@
           </q-item-section>
 
           <q-item-section>
-            <q-item-label>Principal</q-item-label>
+            <q-item-label>Home</q-item-label>
             <q-item-label caption>
-              Pricipal sistema
+              Pagina principal
             </q-item-label>
           </q-item-section>
         </q-item>
-
         <q-item
+          v-if="!$store.getters['login/isLoggedIn']"
           clickable
-          v-if="!$store.getters['showcase/isLoggedIn']"
-          to="login"
           exact
+          to="/login"
         >
           <q-item-section
             avatar
@@ -65,17 +63,14 @@
           </q-item-section>
 
           <q-item-section>
-            <q-item-label>Ingresar</q-item-label>
+            <q-item-label>Login</q-item-label>
             <q-item-label caption>
-              Ingresar al sistema
+              Ingreso al sistema
             </q-item-label>
           </q-item-section>
         </q-item>
-
-
-
-
         <q-item
+          v-if="$store.getters['login/isLoggedIn']"
           clickable
           exact
           to="registro"
@@ -83,20 +78,20 @@
           <q-item-section
             avatar
           >
-            <q-icon name="send" />
+            <q-icon name="list" />
           </q-item-section>
 
           <q-item-section>
-            <q-item-label>Registro</q-item-label>
+            <q-item-label>Registros</q-item-label>
             <q-item-label caption>
-              Registro de inmuebles
+              Realizar nuevo registro
             </q-item-label>
           </q-item-section>
         </q-item>
 
         <q-item
+          v-if="$store.getters['login/isLoggedIn']"
           clickable
-          v-if="$store.getters['showcase/isLoggedIn']"
           @click="logout"
         >
           <q-item-section
@@ -112,7 +107,6 @@
             </q-item-label>
           </q-item-section>
         </q-item>
-
 
 <!--        <EssentialLink-->
 <!--          v-for="link in essentialLinks"-->
@@ -177,21 +171,14 @@
 // ];
 
 import { defineComponent, ref } from 'vue'
-import { useQuasar } from 'quasar'
-import { useStore } from 'vuex'
-import { useRouter } from 'vue-router'
+
 export default defineComponent({
   name: 'MainLayout',
+
   components: {
     // EssentialLink
   },
-  data(){
-    return{
-      $store : useStore(),
-      $q : useQuasar(),
-      $router : useRouter(),
-    }
-  },
+
   setup () {
     const leftDrawerOpen = ref(false)
 
@@ -206,7 +193,7 @@ export default defineComponent({
   methods:{
     logout(){
       this.$q.loading.show()
-      this.$store.dispatch('showcase/logout')
+      this.$store.dispatch('login/logout')
         .then(() => {
           this.$q.loading.hide()
           this.$router.push('/login')
