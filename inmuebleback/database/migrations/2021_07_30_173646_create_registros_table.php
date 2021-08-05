@@ -26,7 +26,7 @@ class CreateRegistrosTable extends Migration
             $table->date('fecha')->default('');
             $table->time('hora')->nullable();
             $table->string('tipo2')->default('NATURAL'); //natural/juridico
-            $table->string('tipo3')->default(''); //activo/baja
+            $table->string('tipo3')->default('ACTIVO'); //activo/baja
             $table->string('gestion')->default('');
             $table->string('detalle')->default('');
             $table->unsignedBigInteger('user_id')->default('1');
