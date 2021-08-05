@@ -4,9 +4,95 @@
       <div class="col-12">
         <q-card  bordered class="">
           <q-card-section>
-            <div class="text-h6">Registro</div>
-<!--            <div class="text-subtitle2">by John Doe</div>-->
+            <div class="text-h6">
+              Registro
+              <q-btn label="Registrar" icon="add" color="positive" @click="crear = true" />
+            </div>
+            <!--            <div class="text-subtitle2">by John Doe</div>-->
           </q-card-section>
+          <q-dialog v-model="crear"  style="max-width: 600px">
+            <q-card>
+              <q-card-section>
+                <div class="text-h6">Registro nuevo inmueble</div>
+              </q-card-section>
+              <q-card-section class="q-pt-none">
+                <q-form
+                  @submit="onSubmit"
+                  @reset="onReset"
+                  class="q-gutter-md"
+                >
+                  <q-input
+                    filled
+                    v-model="registro.ci"
+                    label="Carnet *"
+                    hint="Nombre del carnet"
+                    lazy-rules
+                    :rules="[ val => val && val.length > 0 || 'Porfavor ingresar dato']"
+                  />
+                  <q-input
+                    filled
+                    v-model="registro.contributente"
+                    label="Contribuyente *"
+                    hint="Nombre del contribuyente"
+                    lazy-rules
+                    :rules="[ val => val && val.length > 0 || 'Porfavor ingresar dato']"
+                  />
+                  <q-input
+                    filled
+                    v-model="registro.numero"
+                    label="Formulario 27 *"
+                    hint="Formulario numero 27"
+                    lazy-rules
+                    :rules="[ val => val && val.length > 0 || 'Porfavor ingresar dato']"
+                  />
+                  <q-input
+                    filled
+                    v-model="registro.numtramite"
+                    label="Numero tramite *"
+                    hint="Formualario numero tramite"
+                    lazy-rules
+                    :rules="[ val => val && val.length > 0 || 'Porfavor ingresar dato']"
+                  />
+                  <q-input
+                    filled
+                    v-model="registro.numhoja"
+                    label="Numero hoja *"
+                    hint="Formulario numero hoja"
+                    lazy-rules
+                    :rules="[ val => val && val.length > 0 || 'Porfavor ingresar dato']"
+                  />
+                  <q-input
+                    filled
+                    v-model="registro.lugar"
+                    label="Lugar *"
+                    hint="Lugar"
+                    lazy-rules
+                    :rules="[ val => val && val.length > 0 || 'Porfavor ingresar dato']"
+                  />
+
+                  <q-input
+                    filled
+                    v-model="registro.tipo"
+                    label="Tipo *"
+                    hint="Tipo de tramite"
+                    lazy-rules
+                    :rules="[ val => val && val.length > 0 || 'Porfavor ingresar dato']"
+                  />
+                  <q-toggle v-model="accept" label="I accept the license and terms" />
+                  <div>
+                    <q-btn label="Submit" type="submit" color="primary"/>
+                    <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+                  </div>
+                </q-form>
+              </q-card-section>
+
+<!--              <q-card-actions align="right">-->
+<!--                <q-btn flat label="OK" color="primary" v-close-popup />-->
+<!--              </q-card-actions>-->
+            </q-card>
+          </q-dialog>
+
+
           <q-separator  inset />
           <q-card-section>
             <table id="example" class="display" style="width:100%">
@@ -62,6 +148,8 @@ export default {
   data(){
     return{
       fecha:date.formatDate(Date(),'YYYY-MM-DD'),
+      crear:false,
+      registro:{}
     }
   },
   mounted() {

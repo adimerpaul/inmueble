@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contribuyente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContribuyenteController extends Controller
 {
@@ -34,9 +35,9 @@ class ContribuyenteController extends Controller
      * @param  \App\Models\Contribuyente  $contribuyente
      * @return \Illuminate\Http\Response
      */
-    public function show(Contribuyente $contribuyente)
+    public function show($ci)
     {
-        //
+        return Contribuyente::where('ci',$ci)->firtsOrFail();
     }
 
     /**
