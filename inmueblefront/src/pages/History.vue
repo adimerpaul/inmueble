@@ -23,7 +23,7 @@
               </div>
             </q-form>
             <q-badge color="info" class="full-width text-h6 text-center" >Consulta por mes</q-badge>
-            <q-form class="q-ma-xs" @submit.prevent="misregistros">
+            <q-form class="q-ma-xs" @submit.prevent="registrosmes">
               <div class="row">
                 <div class="col-4 ">
                   <q-select outlined :options="meses" label="Mes" v-model="mes"/>
@@ -37,7 +37,7 @@
               </div>
             </q-form>
             <q-badge color="negative" class="full-width text-h6 text-center" >Consulta por Año</q-badge>
-            <q-form class="q-ma-xs" @submit.prevent="misregistros">
+            <q-form class="q-ma-xs" @submit.prevent="registrosanio">
               <div class="row">
                 <div class="col-6 ">
                   <q-select outlined :options="anios" label="Año" v-model="anio"/>
@@ -240,6 +240,44 @@ export default {
         // console.log(res.data)
         this.registros=res.data
           $('#example').DataTable().destroy();
+        this.$nextTick(()=>{
+          $('#example').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "order": [[ 0, "desc" ]]
+          } );
+          this.$q.loading.hide();
+        })
+
+      })
+    },
+    registrosmes(){
+      this.$q.loading.show()
+      this.$axios.post(process.env.API+'/mes',{mes:this.mes.val,anio:this.anio}).then(res=>{
+        // console.log(res.data)
+        this.registros=res.data
+        $('#example').DataTable().destroy();
+        this.$nextTick(()=>{
+          $('#example').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "order": [[ 0, "desc" ]]
+          } );
+          this.$q.loading.hide();
+        })
+
+      })
+    },
+    registrosanio(){
+      this.$q.loading.show()
+      this.$axios.post(process.env.API+'/anio',{anio:this.anio}).then(res=>{
+        // console.log(res.data)
+        this.registros=res.data
+        $('#example').DataTable().destroy();
         this.$nextTick(()=>{
           $('#example').DataTable( {
             dom: 'Bfrtip',

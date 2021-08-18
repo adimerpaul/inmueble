@@ -13,9 +13,38 @@ class RegistroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function detallesdia(Request $request)
+    {
+        return $request;
+    }
+
+    public function index(Request $request)
     {
         //
+    }
+    public function consulta(Request $request){
+        $inicio = strtotime($request->fecha2);
+        $fin = strtotime($request->fecha1);
+//        $fin = strtotime(date('Y-m-d', strtotime("-1 year")));
+        while($fin <= $inicio) {
+//            echo date('Y-m-d', $fin).' - ';
+            $cantidad=Registro::where('fecha',date('Y-m-d', $fin))->get()->count();
+            $fecha[]=["fecha"=>date('Y-m-d', $fin),'cantidad'=>$cantidad];
+//            Registro::where('tipo','C. GG.')->get();
+//            echo date('y', $month)."----- <br>";
+//            $query=DB::connection('tasas')->table('archi'.date('y', $month))->where('cantidad','like','%'.$cantidad.'%');
+//            if ($query->count()>0){
+////                echo date('y',$month)."---<br>";
+////                array_push($gestiones,['gestion'=>date('Y',$month)]);
+//                array_push($gestiones,$query->get());
+//            }
+            $fin = strtotime("+1 day", $fin);
+//            echo $fin;
+//            echo $dia.'  ';
+        }
+//        return response()->json(['fechas'=>$fecha]);
+        return $fecha;
+//        return $request;
     }
 
     /**
@@ -34,6 +63,19 @@ class RegistroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function mes(Request $request){
+        return Registro::whereYear('fecha',$request->anio)
+            ->whereMonth('fecha',$request->mes)
+            ->with('user')
+            ->get();
+
+    }
+    public function anio(Request $request){
+        return Registro::whereYear('fecha',$request->anio)
+//            ->whereMonth('fecha',$request->mes)
+            ->with('user')
+            ->get();
+    }
     public function store(Request $request)
     {
 //        return $request;

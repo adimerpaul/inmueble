@@ -1,5 +1,6 @@
 import { boot } from 'quasar/wrappers'
 import axios from 'axios'
+import VueApexCharts from "vue3-apexcharts";
 
 // Be careful when using SSR for cross-request state pollution
 // due to creating a Singleton instance here;
@@ -11,6 +12,7 @@ const api = axios.create({ baseURL: 'https://api.example.com' })
 
 export default boot(({ app, router, store }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
+  app.use(VueApexCharts);
 
   app.config.globalProperties.$axios = axios
   // ^ ^ ^ this will allow you to use this.$axios (for Vue Options API form)
