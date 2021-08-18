@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          {{$store.state.login.user.name}}
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div> Inmuebles v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
@@ -85,6 +85,25 @@
             <q-item-label>Registros</q-item-label>
             <q-item-label caption>
               Realizar nuevo registro
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item
+          v-if="$store.getters['login/isLoggedIn']"
+          clickable
+          exact
+          to="history"
+        >
+          <q-item-section
+            avatar
+          >
+            <q-icon name="history" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>Historial</q-item-label>
+            <q-item-label caption>
+              Historial de de registro
             </q-item-label>
           </q-item-section>
         </q-item>

@@ -15,7 +15,7 @@ class ContribuyenteController extends Controller
      */
     public function index()
     {
-        //
+        return Contribuyente::all();
     }
 
     /**
@@ -37,7 +37,9 @@ class ContribuyenteController extends Controller
      */
     public function show($ci)
     {
-        return Contribuyente::where('ci',$ci)->firtsOrFail();
+//        if(Contribuyente::where('ci',$ci)->get)
+//
+        return Contribuyente::where('ci',$ci)->get();
     }
 
     /**

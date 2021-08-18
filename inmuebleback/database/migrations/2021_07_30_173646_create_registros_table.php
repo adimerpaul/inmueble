@@ -18,17 +18,17 @@ class CreateRegistrosTable extends Migration
             $table->string('num');
             $table->string('ci');
             $table->string('contribuyente');
-            $table->string('numero')->default('');
-            $table->string('numtramite')->default('');
-            $table->string('numhoja')->default('');
-            $table->string('lugar')->default('');
+            $table->string('numero')->default('')->nullable();
+            $table->string('numtramite')->default('')->nullable();
+            $table->string('numhoja')->default('')->nullable();
+            $table->string('lugar')->default('')->nullable();
             $table->string('tipo')->default('');//tramite
-            $table->date('fecha')->default('');
+            $table->date('fecha')->default(null);
             $table->time('hora')->nullable();
             $table->string('tipo2')->default('NATURAL'); //natural/juridico
             $table->string('tipo3')->default('ACTIVO'); //activo/baja
             $table->string('gestion')->default('');
-            $table->string('detalle')->default('');
+            $table->string('detalle')->default('')->nullable();
             $table->unsignedBigInteger('user_id')->default('1');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('contribuyente_id')->default('1');

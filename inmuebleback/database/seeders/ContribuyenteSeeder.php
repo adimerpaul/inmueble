@@ -14,8 +14,10 @@ class ContribuyenteSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('contribuyente')->insert([
-            ["ci"=>'1010',"contribuyente"=>"ADIMER PAUL CHAMBI AJATA"]
+        DB::table('contribuyentes')->insert([
+            ["ci"=>'0',"contribuyente"=>"SN"],
+            ["ci"=>'1010',"contribuyente"=>"JUAN LOPEZ"],
+            ["ci"=>'2020',"contribuyente"=>"ALEJANDRO LOPEZ"],
         ]);
     }
 }

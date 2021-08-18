@@ -9,7 +9,7 @@ import axios from 'axios'
 // for each client)
 const api = axios.create({ baseURL: 'https://api.example.com' })
 
-export default boot(({ app }) => {
+export default boot(({ app, router, store }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
 
   app.config.globalProperties.$axios = axios
@@ -19,6 +19,13 @@ export default boot(({ app }) => {
   if (token) {
     // api.defaults.headers.common['Authorization'] = 'Bearer '+token
     app.config.globalProperties.$axios.defaults.headers.common['Authorization'] = 'Bearer '+token
+    app.config.globalProperties.$axios.post(process.env.API+'/me').then(res=>{
+      // console.log(res.data);
+      // return false;
+      // store.state.user=res.data;
+      // store().commit('login/auth_success', {token:token,user:res.data})
+      store.commit('login/auth_success',{token:token,user:res.data})
+    })
   }
 
   app.config.globalProperties.$api = api

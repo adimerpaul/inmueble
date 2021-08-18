@@ -1,5 +1,6 @@
 import Login from '../pages/Login'
 import Registro from "pages/Registro";
+import History from "pages/History";
 const routes = [
   {
     path: '/',
@@ -8,6 +9,7 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'login', component: Login },
       { path: 'registro', component: Registro,meta: {requiresAuth: true} },
+      { path: 'history', component: History,meta: {requiresAuth: true} },
     ]
   },
 

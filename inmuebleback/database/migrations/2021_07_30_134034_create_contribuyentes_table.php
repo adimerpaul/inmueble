@@ -15,7 +15,7 @@ class CreateContribuyentesTable extends Migration
     {
         Schema::create('contribuyentes', function (Blueprint $table) {
             $table->id();
-            $table->string('ci');
+            $table->string('ci')->unique();
             $table->string('contribuyente');
             $table->timestamps();
         });
