@@ -16,8 +16,8 @@ class CreateRegistrosTable extends Migration
         Schema::create('registros', function (Blueprint $table) {
             $table->id();
             $table->string('num');
-            $table->string('ci');
             $table->string('contribuyente');
+            $table->string('ci');
             $table->string('numero')->default('')->nullable();
             $table->string('numtramite')->default('')->nullable();
             $table->string('numhoja')->default('')->nullable();
