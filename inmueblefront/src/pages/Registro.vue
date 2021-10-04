@@ -261,8 +261,14 @@ export default {
       this.tipos=res.data
       console.log(this.tipos)
     })
+    this.minumero();
   },
   methods:{
+    minumero(){
+      this.$axios.get(process.env.API+'/registro').then(res=>{
+        this.registro.numero=parseInt(res.data) + 1;
+    })
+    },
     cambio(re){
       // console.log(re);
       // re.tipo3='INACTIVO';
@@ -315,13 +321,14 @@ export default {
       }
       // console.log(this.registro)
       this.$q.loading.show()
-      this.registro.tipo_id=this.registro.tipo.id
-      this.registro.tipo=this.registro.tipo.nombre
-      this.registro.tipo2=this.registro.tipo.tipo
+      this.registro.tipo_id=this.registro.tipo.id;
+      this.registro.tipo2=this.registro.tipo.tipo;
+      this.registro.tipo=this.registro.tipo.nombre;
       this.$axios.post(process.env.API+'/registro',this.registro).then(res=>{
         console.log(res.data)
         this.misregistros()
         this.registro={}
+        this.minumero();
         // this.$q.loading.hide()
       })
     }
