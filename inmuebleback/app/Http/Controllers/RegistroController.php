@@ -24,6 +24,7 @@ class RegistroController extends Controller
     public function index(Request $request)
     {
         //
+        return Registro::max('numero');
     }
     public function consulta(Request $request){
         $inicio = strtotime($request->fecha2);
@@ -81,7 +82,7 @@ class RegistroController extends Controller
     }
     public function store(Request $request)
     {
-        return $request;
+        //return $request;
 //        return Contribuyente::where('ci',$request->ci)->get()->count();
         if (Contribuyente::where('ci',$request->ci)->get()->count()==0){
             $contribuyente=new Contribuyente();

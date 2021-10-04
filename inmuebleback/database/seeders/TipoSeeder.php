@@ -55,8 +55,6 @@ class TipoSeeder extends Seeder
             ['nombre'=>'BENEMERITO','tipo'=>'JURIDICO'],
             ['nombre'=>'V.LIBROS','tipo'=>'JURIDICO'],
             ['nombre'=>'COMPENSACION','tipo'=>'JURIDICO'],
-             
-            
             
             ['nombre'=>'BAJA','tipo'=>'BAJA'],
             ['nombre'=>'DESBLOQUEO','tipo'=>'BAJA'],
