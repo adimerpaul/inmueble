@@ -87,4 +87,9 @@ class UserController extends Controller
 
 //        return User::where('id',1)->with('unid')->get();
     }
+    public function historialuser(){
+        return User::with('registros')
+//            ->where('id','!=',1)
+            ->get();
+    }
 }

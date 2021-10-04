@@ -22,12 +22,12 @@ class UserSeeder extends Seeder
                 'name'=>'admin',
                 'fechalimite'=>'9999-12-31'
             ],
-            [
-                'email'=>'adimer101@gmail.com',
-                'password'=>Hash::make('7336199'),
-                'name'=>'Adimer Paul Chambi Ajata',
-                'fechalimite'=>'9999-12-31'
-            ],
+//            [
+//                'email'=>'adimer101@gmail.com',
+//                'password'=>Hash::make('7336199'),
+//                'name'=>'Adimer Paul Chambi Ajata',
+//                'fechalimite'=>'9999-12-31'
+//            ],
             [
                 'email'=>'adofranco@gamo.com',
                 'password'=>Hash::make('3093761'),

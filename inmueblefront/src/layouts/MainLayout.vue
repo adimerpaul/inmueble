@@ -121,7 +121,7 @@
           </q-item-section>
 
           <q-item-section>
-            <q-item-label>Historial Por suusario</q-item-label>
+            <q-item-label>Historial por usuario</q-item-label>
             <q-item-label caption>
               Historial de de registro
             </q-item-label>
