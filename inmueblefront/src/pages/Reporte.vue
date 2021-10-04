@@ -30,21 +30,21 @@
     </tr>
     </thead>
     <tbody>
-<!--    <tr v-for="(re,index) in registros" :key="index">-->
-<!--      <td>{{re.num}}</td>-->
-<!--      <td>{{re.ci}}</td>-->
-<!--      <td>{{re.contribuyente}}</td>-->
-<!--      <td>{{re.numero}}</td>-->
-<!--      <td>{{re.numtramite}}</td>-->
-<!--      <td>{{re.numhoja}}</td>-->
-<!--      <td>{{re.lugar}}</td>-->
-<!--      <td>{{re.tipo}}</td>-->
-<!--      <td>{{re.tipo2}}</td>-->
-<!--      <td>{{re.gestion}}</td>-->
-<!--      <td>{{re.fecha}} {{re.hora}}</td>-->
-<!--      <td> <q-badge :color="re.tipo3=='ACTIVO'?'positive':'negative'" @click="cambio(re)"> {{re.tipo3}}</q-badge></td>-->
-<!--      <td>{{re.user.name}}</td>-->
-<!--    </tr>-->
+    <tr v-for="(re,index) in registros" :key="index">
+      <td>{{re.num}}</td>
+      <td>{{re.ci}}</td>
+      <td>{{re.contribuyente}}</td>
+      <td>{{re.numero}}</td>
+      <td>{{re.numtramite}}</td>
+      <td>{{re.numhoja}}</td>
+      <td>{{re.lugar}}</td>
+      <td>{{re.tipo}}</td>
+      <td>{{re.tipo2}}</td>
+      <td>{{re.gestion}}</td>
+      <td>{{re.fecha}} {{re.hora}}</td>
+      <td> <q-badge :color="re.tipo3=='ACTIVO'?'positive':'negative'" @click="cambio(re)"> {{re.tipo3}}</q-badge></td>
+      <td>{{re.user.name}}</td>
+    </tr>
     </tbody>
   </table>
 </q-page>
@@ -72,6 +72,11 @@ window.JSZip=jszip;
 import { date } from 'quasar';
 export default {
   name: "Reporte",
+  data() {
+    return{
+      registros:[]
+    }
+  },
   mounted() {
     $('#example').DataTable( {
       dom: 'Bfrtip',
@@ -84,7 +89,7 @@ export default {
     natural(){
       this.$q.loading.show()
       this.$axios.get(process.env.API+'/reporte/NATURAL').then(res=>{
-        // console.log(res.data)
+        console.log(res.data)
         this.registros=res.data
         $('#example').DataTable().destroy();
         this.$nextTick(()=>{

@@ -14,7 +14,8 @@ class RegistroController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function reporte($tipo){
-        return Registro::where('tipo',$tipo)->get();
+//        return $tipo;
+        return Registro::with('user')->where('tipo2',$tipo)->get();
     }
     public function detallesdia(Request $request)
     {
