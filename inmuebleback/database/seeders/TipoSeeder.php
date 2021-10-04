@@ -36,10 +36,35 @@ class TipoSeeder extends Seeder
             ['nombre'=>'REG. IMP.','tipo'=>'NATURAL'],
             ['nombre'=>'C. GG','tipo'=>'NATURAL'],
             ['nombre'=>'C.CAT.','tipo'=>'NATURAL'],
-
-            ['nombre'=>'1','tipo'=>'JURIDICO'],
-
-            ['nombre'=>'2','tipo'=>'BAJA'],
+            
+            
+            ['nombre'=>'BALANCE','tipo'=>'JURIDICO'],
+            ['nombre'=>'TABLAS','tipo'=>'JURIDICO'],
+            ['nombre'=>'EXENCION','tipo'=>'JURIDICO'],
+            ['nombre'=>'HABILITACION','tipo'=>'JURIDICO'],
+            ['nombre'=>'C. RAZON SOCIAL','tipo'=>'JURIDICO'],
+            ['nombre'=>'AUTO EVALUACION','tipo'=>'JURIDICO'],
+            ['nombre'=>'CN. DE APELLIDO','tipo'=>'JURIDICO'],
+            ['nombre'=>'CAMBIO DE RAZON','tipo'=>'JURIDICO'],
+            ['nombre'=>'V.EN LIBROS','tipo'=>'JURIDICO'],
+            ['nombre'=>'CREDITO FISCAL','tipo'=>'JURIDICO'],
+            ['nombre'=>'DESISTIMIENTO','tipo'=>'JURIDICO'],
+            ['nombre'=>'M. LIBROS','tipo'=>'JURIDICO'],
+            ['nombre'=>'APELLIDO','tipo'=>'JURIDICO'],
+            ['nombre'=>'RESTITUCIO','tipo'=>'JURIDICO'],
+            ['nombre'=>'BENEMERITO','tipo'=>'JURIDICO'],
+            ['nombre'=>'V.LIBROS','tipo'=>'JURIDICO'],
+            ['nombre'=>'COMPENSACION','tipo'=>'JURIDICO'],
+             
+            
+            
+            ['nombre'=>'BAJA','tipo'=>'BAJA'],
+            ['nombre'=>'DESBLOQUEO','tipo'=>'BAJA'],
+            ['nombre'=>'BLOQUEO','tipo'=>'BAJA'],
+            ['nombre'=>'HABILITACION','tipo'=>'BAJA'],
+            ['nombre'=>'COMPENSACION','tipo'=>'BAJA'],
+            ['nombre'=>'REHABILITACION','tipo'=>'BAJA'],
+            ['nombre'=>'ANULACION PL. P.','tipo'=>'BAJA'],
 
             ]);
     }
