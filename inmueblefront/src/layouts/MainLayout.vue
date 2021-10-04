@@ -111,6 +111,27 @@
         <q-item
           v-if="$store.getters['login/isLoggedIn']"
           clickable
+          exact
+          to="historyuser"
+        >
+          <q-item-section
+            avatar
+          >
+            <q-icon name="list" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>Historial Por suusario</q-item-label>
+            <q-item-label caption>
+              Historial de de registro
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+
+
+        <q-item
+          v-if="$store.getters['login/isLoggedIn']"
+          clickable
           @click="logout"
         >
           <q-item-section
