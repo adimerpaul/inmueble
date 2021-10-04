@@ -250,7 +250,6 @@ export default {
           } );
           this.$q.loading.hide();
         })
-
       })
     },
     registrosmes(){

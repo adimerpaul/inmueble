@@ -2,6 +2,7 @@ import Login from '../pages/Login'
 import Registro from "pages/Registro";
 import History from "pages/History";
 import HistorialUser from "pages/HistorialUser";
+import Reporte from "pages/Reporte";
 const routes = [
   {
     path: '/',
@@ -12,6 +13,7 @@ const routes = [
       { path: 'registro', component: Registro,meta: {requiresAuth: true} },
       { path: 'history', component: History,meta: {requiresAuth: true} },
       { path: 'historyuser', component: HistorialUser,meta: {requiresAuth: true} },
+      { path: 'reporte', component: Reporte,meta: {requiresAuth: true} },
     ]
   },
 
