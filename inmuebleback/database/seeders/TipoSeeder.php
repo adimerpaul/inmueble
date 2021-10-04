@@ -17,31 +17,10 @@ class TipoSeeder extends Seeder
         //
         DB::table('tipos')->insert([
             ['nombre'=>'DRENAJE','tipo'=>'NATURAL'],
-
-
-C.BAN
-REC. 
-MOD.  DATOS
-R. IMP. 
-C. GRAL
-REC.  COD.
-REG. IMP. 
-MOD. C.I.
-C.GRAL. 
-C. GG
-C.CRAL
-C.GG
-C.BANC.
-MOD. CI
-EXCEDENCIA
-C.CAT.
-C.GRAL 
-C.GRA.
             ['nombre'=>'CN. COD.','tipo'=>'NATURAL'],
             ['nombre'=>'I.T.','tipo'=>'NATURAL'],
             ['nombre'=>'C.GRAL.','tipo'=>'NATURAL'],
             ['nombre'=>'R.IMP.','tipo'=>'NATURAL'],
-            ['nombre'=>'MOD. C.I','tipo'=>'NATURAL'],
             ['nombre'=>'MOD. DATOS','tipo'=>'NATURAL'],
             ['nombre'=>'RECAT.','tipo'=>'NATURAL'],
             ['nombre'=>'MOD. C.I.','tipo'=>'NATURAL'],
@@ -49,32 +28,14 @@ C.GRA.
             ['nombre'=>'CN. NOMB','tipo'=>'NATURAL'],
             ['nombre'=>'EXEDENCIA','tipo'=>'NATURAL'],
             ['nombre'=>'R. IMP.','tipo'=>'NATURAL'],
-            ['nombre'=>'C.GRAL','tipo'=>'NATURAL'],
             ['nombre'=>'REC. COD.','tipo'=>'NATURAL'],
-            ['nombre'=>'CN5222','tipo'=>'NATURAL'],
-
             ['nombre'=>'CN','tipo'=>'NATURAL'],
-            ['nombre'=>'C.BANC','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
-            ['nombre'=>'','tipo'=>'NATURAL'],
+            ['nombre'=>'C.C.','tipo'=>'NATURAL'],
+            ['nombre'=>'REC.','tipo'=>'NATURAL'],
+            ['nombre'=>'R. IMP.','tipo'=>'NATURAL'],
+            ['nombre'=>'REG. IMP.','tipo'=>'NATURAL'],
+            ['nombre'=>'C. GG','tipo'=>'NATURAL'],
+            ['nombre'=>'C.CAT.','tipo'=>'NATURAL'],
 
             ['nombre'=>'','tipo'=>'JURIDICO'],
 
