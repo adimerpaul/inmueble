@@ -37,9 +37,9 @@ class TipoSeeder extends Seeder
             ['nombre'=>'C. GG','tipo'=>'NATURAL'],
             ['nombre'=>'C.CAT.','tipo'=>'NATURAL'],
 
-            ['nombre'=>'','tipo'=>'JURIDICO'],
+            ['nombre'=>'1','tipo'=>'JURIDICO'],
 
-            ['nombre'=>'','tipo'=>'BAJA'],
+            ['nombre'=>'2','tipo'=>'BAJA'],
 
             ]);
     }
