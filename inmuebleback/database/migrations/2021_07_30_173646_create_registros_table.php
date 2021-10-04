@@ -33,6 +33,8 @@ class CreateRegistrosTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('contribuyente_id')->default('1');
             $table->foreign('contribuyente_id')->references('id')->on('contribuyentes');
+            $table->unsignedBigInteger('tipo_id')->nullable();
+            $table->foreign('tipo_id')->references('id')->on('tipos');
             $table->timestamps();
         });
     }

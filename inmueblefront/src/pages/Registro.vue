@@ -106,6 +106,7 @@
                 <div class="col-6 col-sm-1">
 <!--                  <q-input  outlined label="tipo" v-model="registro.tipo" />-->
                   <q-select outlined :options="tipos" label="Tramite" v-model="registro.tipo" required/>
+                  
                 </div>
                 <div class="col-6 col-sm-1">
 <!--                  <q-input  outlined label="tipo2" v-model="registro.tipo2" />-->
@@ -205,6 +206,7 @@ export default {
         "C. GRAL",
         "C. C.",
         "C. CAT.",
+        "C. RAZON SOCIAL",
         "CN. COD.",
         "CN. NOMB.",
         "DRENAJE",
@@ -218,6 +220,23 @@ export default {
         "RECTA.",
         "REC. IMP.",
         "BAJA",
+        "APELLIDO",
+        "AUTO EVALUACION",
+        "BALANCE",
+        "BENEMERITO",
+        "CAMBIO DE RAZON",
+        "CN. DE APELLIDO",
+        "COMPENSACION",
+        "CREDITO FISCAL",
+        "DESISTIMIENTO",
+        "EXENCION",
+        "HABILITACION",
+        "DESISTIMIENTO",
+        "DESISTIMIENTO",
+        "DESISTIMIENTO",
+        "DESISTIMIENTO",
+        "DESISTIMIENTO",
+        "DESISTIMIENTO",
       ]
     }
   },
