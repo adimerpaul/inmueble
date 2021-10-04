@@ -28,6 +28,42 @@ class UserSeeder extends Seeder
                 'name'=>'Adimer Paul Chambi Ajata',
                 'fechalimite'=>'9999-12-31'
             ],
+            [
+                'email'=>'adofranco@gamo.com',
+                'password'=>Hash::make('3093761'),
+                'name'=>'Dolores Lourdes franco Zambrana',
+                'fechalimite'=>'9999-12-31'
+            ],
+            [
+                'email'=>'hechoque@gamo.com',
+                'password'=>Hash::make('3540800'),
+                'name'=>'Hernán choque Fernández',
+                'fechalimite'=>'9999-12-31'
+            ],
+            [
+                'email'=>'caledezma@gamo.com',
+                'password'=>Hash::make('2737871'),
+                'name'=>'Carola Muana Ledezma Calatayud',
+                'fechalimite'=>'9999-12-31'
+            ],
+            [
+                'email'=>'wisalvatierra@gamo.com',
+                'password'=>Hash::make('3530929'),
+                'name'=>'William Salvatierra',
+                'fechalimite'=>'9999-12-31'
+            ],
+            [
+                'email'=>'jocox@gamo.com',
+                'password'=>Hash::make('3514515'),
+                'name'=>'Jorge Cox Velasquez',
+                'fechalimite'=>'9999-12-31'
+            ],
+            [
+                'email'=>'cocadima@gamo.com',
+                'password'=>Hash::make('3108812'),
+                'name'=>'Carlos Cadima',
+                'fechalimite'=>'9999-12-31'
+            ],
         ]);
     }
 }
