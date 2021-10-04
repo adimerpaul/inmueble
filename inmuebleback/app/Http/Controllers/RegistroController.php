@@ -81,7 +81,7 @@ class RegistroController extends Controller
     }
     public function store(Request $request)
     {
-//        return $request;
+        return $request;
 //        return Contribuyente::where('ci',$request->ci)->get()->count();
         if (Contribuyente::where('ci',$request->ci)->get()->count()==0){
             $contribuyente=new Contribuyente();
@@ -114,6 +114,7 @@ class RegistroController extends Controller
         $registro->detalle=$request->detalle;
         $registro->user_id=$request->user()->id;
         $registro->contribuyente_id=$contribuyente_id;
+        $registro->tipo_id=$request->tipo_id;
         $registro->save();
         return $registro;
     }

@@ -105,12 +105,20 @@
                 <div class="col-6 col-sm-1"><q-input  outlined label="lugar" v-model="registro.lugar" style="text-transform: uppercase"/></div>
                 <div class="col-6 col-sm-1">
 <!--                  <q-input  outlined label="tipo" v-model="registro.tipo" />-->
-                  <q-select outlined :options="tipos" label="Tramite" v-model="registro.tipo" required/>
+                  <q-select outlined :options="tipos" label="Tramite" v-model="registro.tipo" option-label="nombre" required/>
 
                 </div>
                 <div class="col-6 col-sm-1">
+<!--                    {{registro.tipo==undefined}}-->
+                    <template v-if="registro.tipo">
+                      <q-badge class="full-width full-height text-bold" :color="registro.tipo.tipo=='NATURAL'?'positive':registro.tipo.tipo=='JURIDICO'?'negative':'teal'"> Tipo <br>
+                        {{registro.tipo.tipo}}
+                      </q-badge>
+                    </template>
+
+
 <!--                  <q-input  outlined label="tipo2" v-model="registro.tipo2" />-->
-                  <q-select outlined label="Tipo" :options="['NATURAL','JURIDICO']" v-model="registro.tipo2"/>
+<!--                  <q-select outlined label="Tipo" :options="['NATURAL','JURIDICO']" v-model="registro.tipo2"/>-->
                 </div>
                 <div class="col-6 col-sm-2"><q-input  outlined label="detalle" v-model="registro.detalle" /></div>
                 <div class="col-6 col-sm-1 flex flex-center">
@@ -200,44 +208,45 @@ export default {
       crear:false,
       registro:{tipo2:'NATURAL'},
       registros:[],
-      tipos:[
-        "C. BANC.",
-        "C. GG.",
-        "C. GRAL",
-        "C. C.",
-        "C. CAT.",
-        "C. RAZON SOCIAL",
-        "CN. COD.",
-        "CN. NOMB.",
-        "DRENAJE",
-        "EXEDENCIA",
-        "I. T.",
-        "MOD. DATOS",
-        "MOD. CI.",
-        "R. IMP.",
-        "REC.",
-        "REC. COD.",
-        "RECTA.",
-        "REC. IMP.",
-        "BAJA",
-        "APELLIDO",
-        "AUTO EVALUACION",
-        "BALANCE",
-        "BENEMERITO",
-        "CAMBIO DE RAZON",
-        "CN. DE APELLIDO",
-        "COMPENSACION",
-        "CREDITO FISCAL",
-        "DESISTIMIENTO",
-        "EXENCION",
-        "HABILITACION",
-        "DESISTIMIENTO",
-        "DESISTIMIENTO",
-        "DESISTIMIENTO",
-        "DESISTIMIENTO",
-        "DESISTIMIENTO",
-        "DESISTIMIENTO",
-      ]
+      tipos:[],
+      // tipos:[
+      //   "C. BANC.",
+      //   "C. GG.",
+      //   "C. GRAL",
+      //   "C. C.",
+      //   "C. CAT.",
+      //   "C. RAZON SOCIAL",
+      //   "CN. COD.",
+      //   "CN. NOMB.",
+      //   "DRENAJE",
+      //   "EXEDENCIA",
+      //   "I. T.",
+      //   "MOD. DATOS",
+      //   "MOD. CI.",
+      //   "R. IMP.",
+      //   "REC.",
+      //   "REC. COD.",
+      //   "RECTA.",
+      //   "REC. IMP.",
+      //   "BAJA",
+      //   "APELLIDO",
+      //   "AUTO EVALUACION",
+      //   "BALANCE",
+      //   "BENEMERITO",
+      //   "CAMBIO DE RAZON",
+      //   "CN. DE APELLIDO",
+      //   "COMPENSACION",
+      //   "CREDITO FISCAL",
+      //   "DESISTIMIENTO",
+      //   "EXENCION",
+      //   "HABILITACION",
+      //   "DESISTIMIENTO",
+      //   "DESISTIMIENTO",
+      //   "DESISTIMIENTO",
+      //   "DESISTIMIENTO",
+      //   "DESISTIMIENTO",
+      //   "DESISTIMIENTO",
+      // ]
     }
   },
   mounted() {
@@ -248,6 +257,10 @@ export default {
       ]
     } );
     this.misregistros();
+    this.$axios.get(process.env.API+'/tipo').then(res=>{
+      this.tipos=res.data
+      console.log(this.tipos)
+    })
   },
   methods:{
     cambio(re){
@@ -302,10 +315,13 @@ export default {
       }
       // console.log(this.registro)
       this.$q.loading.show()
+      this.registro.tipo_id=this.registro.tipo.id
+      this.registro.tipo=this.registro.tipo.nombre
+      this.registro.tipo2=this.registro.tipo.tipo
       this.$axios.post(process.env.API+'/registro',this.registro).then(res=>{
-        // console.log(res.data)
+        console.log(res.data)
         this.misregistros()
-        this.registro={tipo2:'NATURAL'}
+        this.registro={}
         // this.$q.loading.hide()
       })
     }
