@@ -2,13 +2,13 @@
 <q-page class="q-pa-xs">
   <div class="row">
     <div class="col-4 q-pa-xs flex flex-center">
-      <q-btn label="Naturales" icon="list" color="positive" />
+      <q-btn label="Naturales" icon="list" color="positive" @click="natural" />
     </div>
     <div class="col-4 q-pa-xs flex flex-center">
-      <q-btn label="Juridicos" icon="code" color="negative" />
+      <q-btn label="Juridicos" icon="code" color="negative" @click="juridico" />
     </div>
     <div class="col-4 q-pa-xs flex flex-center">
-      <q-btn label="Bajas" icon="home" color="teal" />
+      <q-btn label="Bajas" icon="home" color="teal"  @click="baja"/>
     </div>
   </div>
   <table id="example" class="display" style="width:100%">
@@ -83,7 +83,7 @@ export default {
   methods:{
     natural(){
       this.$q.loading.show()
-      this.$axios.get(process.env.API+'/reporte/natural').then(res=>{
+      this.$axios.get(process.env.API+'/reporte/NATURAL').then(res=>{
         // console.log(res.data)
         this.registros=res.data
         $('#example').DataTable().destroy();
@@ -98,7 +98,43 @@ export default {
           this.$q.loading.hide();
         })
       })
-    }
+    },
+    juridico(){
+      this.$q.loading.show()
+      this.$axios.get(process.env.API+'/reporte/JURIDICO').then(res=>{
+        // console.log(res.data)
+        this.registros=res.data
+        $('#example').DataTable().destroy();
+        this.$nextTick(()=>{
+          $('#example').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "order": [[ 0, "desc" ]]
+          } );
+          this.$q.loading.hide();
+        })
+      })
+    },
+    baja(){
+      this.$q.loading.show()
+      this.$axios.get(process.env.API+'/reporte/BAJA').then(res=>{
+        // console.log(res.data)
+        this.registros=res.data
+        $('#example').DataTable().destroy();
+        this.$nextTick(()=>{
+          $('#example').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "order": [[ 0, "desc" ]]
+          } );
+          this.$q.loading.hide();
+        })
+      })
+    },
   }
 }
 </script>
