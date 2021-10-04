@@ -29,15 +29,15 @@ class UserSeeder extends Seeder
 //                'fechalimite'=>'9999-12-31'
 //            ],
             [
-                'email'=>'adofranco@gamo.com',
+                'email'=>'dofranco@gamo.com',
                 'password'=>Hash::make('3093761'),
-                'name'=>'Dolores Lourdes franco Zambrana',
+                'name'=>'Dolores Lourdes Franco Zambrana',
                 'fechalimite'=>'9999-12-31'
             ],
             [
                 'email'=>'hechoque@gamo.com',
                 'password'=>Hash::make('3540800'),
-                'name'=>'Hernán choque Fernández',
+                'name'=>'Hernán Choque Fernández',
                 'fechalimite'=>'9999-12-31'
             ],
             [

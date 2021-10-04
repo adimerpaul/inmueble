@@ -217,6 +217,7 @@ export default {
         "REC. COD.",
         "RECTA.",
         "REC. IMP.",
+        "BAJA",
       ]
     }
   },
