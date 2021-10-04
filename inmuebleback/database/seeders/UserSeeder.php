@@ -64,6 +64,13 @@ class UserSeeder extends Seeder
                 'name'=>'Carlos Cadima',
                 'fechalimite'=>'9999-12-31'
             ],
+
+            [
+                'email'=>'selopez@gamo.com',
+                'password'=>Hash::make('3518701'),
+                'name'=>'Sebastian Lopez Hidalgo',
+                'fechalimite'=>'9999-12-31'
+            ],
         ]);
     }
 }
