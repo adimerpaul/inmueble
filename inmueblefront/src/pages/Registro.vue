@@ -266,7 +266,8 @@ export default {
   methods:{
     minumero(){
       this.$axios.get(process.env.API+'/registro').then(res=>{
-        this.registro.numero=parseInt(res.data) + 1;
+        console.log(res.data);
+        //this.registro.numero=parseInt(res.data) + 1;
     })
     },
     cambio(re){

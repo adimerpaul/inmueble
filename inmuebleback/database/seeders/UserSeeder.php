@@ -71,6 +71,12 @@ class UserSeeder extends Seeder
                 'name'=>'Sebastian Lopez Hidalgo',
                 'fechalimite'=>'9999-12-31'
             ],
+            [
+                'email'=>'lafuente@gamo.com',
+                'password'=>Hash::make('3508795'),
+                'name'=>'Laura Fuente Berrios',
+                'fechalimite'=>'9999-12-31'
+            ],
         ]);
     }
 }
