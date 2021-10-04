@@ -89,7 +89,7 @@ class UserController extends Controller
     }
     public function historialuser(){
         return User::with('registros')
-//            ->where('id','!=',1)
+            ->where('id','!=',1)
             ->get();
     }
 }

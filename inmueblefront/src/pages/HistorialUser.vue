@@ -14,10 +14,36 @@
     <td>{{i+1}}</td>
     <td>{{u.name}}</td>
     <td>{{u.registros.length}}</td>
-    <td><q-btn color="primary" label="HIstorial" icon="list" size="xs"/></td>
+    <td><q-btn color="primary" label="Historial" icon="list" size="xs" @click="historial(u)"/></td>
   </tr>
   </tbody>
 </table>
+  <q-dialog v-model="alert" full-width>
+    <q-card>
+      <q-card-section>
+        <div class="text-h6">Historial registros</div>
+      </q-card-section>
+
+      <q-card-section class="q-pt-none">
+        <ul v-for="r in user.registros" :key="r.id">
+          <li>
+            Num: {{r.num}}
+            Contribuyente: {{r.contribuyente}}
+            NumTramite: {{r.numtramite}}
+            Numhoja: {{r.numhoja}}
+            Lugar: {{r.lugar}}
+            Tipo: {{r.tipo}}
+            Fecha: {{r.fecha}}
+          </li>
+        </ul>
+      </q-card-section>
+
+      <q-card-actions align="right">
+        <q-btn flat label="OK" color="primary" v-close-popup />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
+
 </q-page>
 </template>
 
@@ -26,7 +52,9 @@ export default {
   name: "HistorialUser",
   data(){
     return {
-      users:[]
+      users:[],
+      user:{},
+      alert:false
     }
   },
   created(){
@@ -36,6 +64,12 @@ export default {
       this.users=res.data
       this.$q.loading.hide()
     })
+  },
+  methods:{
+    historial(u){
+      this.user=u
+      this.alert=true
+    }
   }
 }
 </script>
