@@ -98,11 +98,11 @@
               <div class="row">
 <!--                <div class="col-1"><q-input  outlined label="num" v-model="registro.num" /></div>-->
                 <div class="col-6 col-sm-1"><q-input  outlined label="ci" v-model="registro.ci" @keyup="buscarcontribuyente" required/></div>
-                <div class="col-6 col-sm-2"><q-input  outlined label="contribuyente" v-model="registro.contribuyente" required/></div>
+                <div class="col-6 col-sm-2"><q-input  outlined label="contribuyente" v-model="registro.contribuyente" required style="text-transform: uppercase"/></div>
                 <div class="col-6 col-sm-1"><q-input  outlined label="numero" v-model="registro.numero" /></div>
                 <div class="col-6 col-sm-1"><q-input  outlined label="numtramite" v-model="registro.numtramite" /></div>
                 <div class="col-6 col-sm-1"><q-input  outlined label="numhoja" v-model="registro.numhoja" /></div>
-                <div class="col-6 col-sm-1"><q-input  outlined label="lugar" v-model="registro.lugar" /></div>
+                <div class="col-6 col-sm-1"><q-input  outlined label="lugar" v-model="registro.lugar" style="text-transform: uppercase"/></div>
                 <div class="col-6 col-sm-1">
 <!--                  <q-input  outlined label="tipo" v-model="registro.tipo" />-->
                   <q-select outlined :options="tipos" label="Tramite" v-model="registro.tipo" required/>

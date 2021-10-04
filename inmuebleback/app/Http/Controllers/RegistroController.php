@@ -83,13 +83,13 @@ class RegistroController extends Controller
         if (Contribuyente::where('ci',$request->ci)->get()->count()==0){
             $contribuyente=new Contribuyente();
             $contribuyente->ci=$request->ci;
-            $contribuyente->contribuyente=$request->contribuyente;
+            $contribuyente->contribuyente=strtoupper($request->contribuyente);
             $contribuyente->save();
             $contribuyente_id=$contribuyente->id;
         }else{
             $contribuyente=Contribuyente::where('ci',$request->ci)->firstOrFail();
             $contribuyente=Contribuyente::find($contribuyente->id);
-            $contribuyente->contribuyente=$request->contribuyente;
+            $contribuyente->contribuyente=strtoupper($request->contribuyente);
             $contribuyente->save();
             $contribuyente_id=$contribuyente->id;
         }
@@ -98,11 +98,11 @@ class RegistroController extends Controller
         $num=Registro::where('gestion',date('Y'))->get()->count()+1;
         $registro->num=$num;
         $registro->ci=$request->ci;
-        $registro->contribuyente=$request->contribuyente;
+        $registro->contribuyente=strtoupper($request->contribuyente);
         $registro->numero=$request->numero;
         $registro->numtramite=$request->numtramite;
         $registro->numhoja=$request->numhoja;
-        $registro->lugar=$request->lugar;
+        $registro->lugar=strtoupper($request->lugar);
         $registro->tipo=$request->tipo;
         $registro->fecha=date('Y-m-d');
         $registro->hora=date('H:i:s');
