@@ -128,6 +128,28 @@
           </q-item-section>
         </q-item>
 
+        <q-item
+          v-if="$store.getters['login/isLoggedIn']"
+          clickable
+          exact
+          to="reporte"
+        >
+          <q-item-section
+            avatar
+          >
+            <q-icon name="code" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>Reportes </q-item-label>
+            <q-item-label caption>
+              Reportes generales
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+
+
+
 
         <q-item
           v-if="$store.getters['login/isLoggedIn']"

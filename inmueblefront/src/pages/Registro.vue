@@ -106,7 +106,7 @@
                 <div class="col-6 col-sm-1">
 <!--                  <q-input  outlined label="tipo" v-model="registro.tipo" />-->
                   <q-select outlined :options="tipos" label="Tramite" v-model="registro.tipo" required/>
-                  
+
                 </div>
                 <div class="col-6 col-sm-1">
 <!--                  <q-input  outlined label="tipo2" v-model="registro.tipo2" />-->
