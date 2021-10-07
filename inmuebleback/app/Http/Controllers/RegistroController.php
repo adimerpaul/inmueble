@@ -121,6 +121,39 @@ class RegistroController extends Controller
         return $registro;
     }
 
+    public function modificar(Request $request){
+            //return $request;
+    //        return Contribuyente::where('ci',$request->ci)->get()->count();
+            if (Contribuyente::where('ci',$request->ci)->get()->count()==0){
+                $contribuyente=new Contribuyente();
+                $contribuyente->ci=$request->ci;
+                $contribuyente->contribuyente=strtoupper($request->contribuyente);
+                $contribuyente->save();
+                $contribuyente_id=$contribuyente->id;
+            }else{
+                $contribuyente=Contribuyente::where('ci',$request->ci)->firstOrFail();
+                $contribuyente=Contribuyente::find($contribuyente->id);
+                $contribuyente->contribuyente=strtoupper($request->contribuyente);
+                $contribuyente->save();
+                $contribuyente_id=$contribuyente->id;
+            }
+    
+            $registro= Registro::find($request->id);
+            $registro->ci=$request->ci;
+            $registro->contribuyente=strtoupper($request->contribuyente);
+            $registro->numero=$request->numero;
+            $registro->numtramite=$request->numtramite;
+            $registro->numhoja=$request->numhoja;
+            $registro->lugar=strtoupper($request->lugar);
+            $registro->tipo=$request->tipo;
+            $registro->tipo2=$request->tipo2;
+            $registro->detalle=$request->detalle;
+            $registro->contribuyente_id=$contribuyente_id;
+            $registro->tipo_id=$request->tipo_id;
+            $registro->save();
+            return $registro;
+    
+    }
     /**
      * Display the specified resource.
      *

@@ -29,6 +29,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::resource('/tipo',\App\Http\Controllers\TipoController::class);
     Route::post('/mes',[\App\Http\Controllers\RegistroController::class,'mes']);
     Route::post('/anio',[\App\Http\Controllers\RegistroController::class,'anio']);
+    Route::post('/modificar',[\App\Http\Controllers\RegistroController::class,'modificar']);
     Route::get('/reporte/{tipo}',[\App\Http\Controllers\RegistroController::class,'reporte']);
     Route::get('/historialuser',[\App\Http\Controllers\UserController::class,'historialuser']);
 

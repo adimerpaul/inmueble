@@ -122,7 +122,8 @@
                 </div>
                 <div class="col-6 col-sm-2"><q-input  outlined label="detalle" v-model="registro.detalle" /></div>
                 <div class="col-6 col-sm-1 flex flex-center">
-                  <q-btn label="Agregar" icon="send" color="positive" type="submit" />
+                  <q-btn label="Modificar" icon="edit" color="amber" type="submit" v-if="mod"/>
+                  <q-btn label="Agregar" icon="send" color="positive" type="submit" v-else/>
                 </div>
               </div>
             </q-form>
@@ -154,6 +155,7 @@
                 <th>Fecha hora</th>
                 <th>Estado</th>
                 <th>Usuario</th>
+                <th>Opcion</th>
               </tr>
               </thead>
               <tbody>
@@ -171,6 +173,7 @@
                 <td>{{re.fecha}} {{re.hora}}</td>
                 <td> <q-badge :color="re.tipo3=='ACTIVO'?'positive':'negative'" @click="cambio(re)"> {{re.tipo3}}</q-badge></td>
                 <td>{{re.user.name}}</td>
+                <td><q-btn color="amber" glossy icon="edit" @click="modificar(re)"/></td>
               </tr>
               </tbody>
             </table>
@@ -209,6 +212,7 @@ export default {
       registro:{tipo2:'NATURAL'},
       registros:[],
       tipos:[],
+      mod:false,
       // tipos:[
       //   "C. BANC.",
       //   "C. GG.",
@@ -312,6 +316,8 @@ export default {
       }
     },
     agregar(){
+      if(this.registro.id!=undefined || this.registro.id!=='')
+        this.actualizar();
       if (this.registro.tipo=='' || this.registro.tipo==undefined){
         this.$q.notify({
           color:'red',
@@ -330,6 +336,43 @@ export default {
         this.misregistros()
         this.registro={}
         this.minumero();
+        // this.$q.loading.hide()
+      })
+    },
+    modificar(re){
+      console.log(re);
+      this.registro.re;
+      this.registro.id=re.id;
+      this.registro.ci=re.ci;
+      this.registro.contribuyente=re.contribuyente;
+      this.registro.numero=re.numero;
+      this.registro.numtramite=re.numtramite;
+      this.registro.numhoja=re.numhoja
+      this.registro.lugar=re.lugar
+      this.registro.tipo={id:re.tipo_id,nombre:re.tipo,tipo:re.tipo2}
+      this.registro.detalle=re.detalle;
+      this.mod=true;
+    },
+    actualizar(){
+      if (this.registro.tipo=='' || this.registro.tipo==undefined){
+        this.$q.notify({
+          color:'red',
+          icon:'error',
+          message:'Tienes que selecionar tipo de tramite'
+        })
+        return false
+      }
+      // console.log(this.registro)
+      this.$q.loading.show()
+      this.registro.tipo_id=this.registro.tipo.id;
+      this.registro.tipo2=this.registro.tipo.tipo;
+      this.registro.tipo=this.registro.tipo.nombre;
+      this.$axios.post(process.env.API+'/modificar',this.registro).then(res=>{
+        console.log(res.data)
+        this.misregistros()
+        this.registro={}
+        this.minumero();
+        this.mod=false;
         // this.$q.loading.hide()
       })
     }
