@@ -213,6 +213,7 @@ export default {
       registros:[],
       tipos:[],
       mod:false,
+      boolcrear:true,
       // tipos:[
       //   "C. BANC.",
       //   "C. GG.",
@@ -316,31 +317,58 @@ export default {
       }
     },
     agregar(){
-      if(this.registro.id!=undefined || this.registro.id!=='')
-        this.actualizar();
-      if (this.registro.tipo=='' || this.registro.tipo==undefined){
-        this.$q.notify({
-          color:'red',
-          icon:'error',
-          message:'Tienes que selecionar tipo de tramite'
-        })
-        return false
-      }
+      // if(this.registro.id!=undefined || this.registro.id!=='')
+      //   this.actualizar();
+      // if (this.registro.tipo=='' || this.registro.tipo==undefined){
+      //   this.$q.notify({
+      //     color:'red',
+      //     icon:'error',
+      //     message:'Tienes que selecionar tipo de tramite'
+      //   })
+      //   return false
+      // }
       // console.log(this.registro)
       this.$q.loading.show()
-      this.registro.tipo_id=this.registro.tipo.id;
-      this.registro.tipo2=this.registro.tipo.tipo;
-      this.registro.tipo=this.registro.tipo.nombre;
-      this.$axios.post(process.env.API+'/registro',this.registro).then(res=>{
-        console.log(res.data)
-        this.misregistros()
-        this.registro={}
-        this.minumero();
-        // this.$q.loading.hide()
-      })
+      if (this.boolcrear){
+        this.registro.tipo_id=this.registro.tipo.id;
+        this.registro.tipo2=this.registro.tipo.tipo;
+        this.registro.tipo=this.registro.tipo.nombre;
+        this.$axios.post(process.env.API+'/registro',this.registro).then(res=>{
+          console.log(res.data)
+          this.misregistros()
+          this.registro={}
+          this.minumero();
+          // this.$q.loading.hide()
+        })
+      } else{
+        if (this.registro.tipo=='' || this.registro.tipo==undefined){
+          this.$q.notify({
+            color:'red',
+            icon:'error',
+            message:'Tienes que selecionar tipo de tramite'
+          })
+          return false
+        }
+        // console.log(this.registro)
+        this.$q.loading.show()
+        this.registro.tipo_id=this.registro.tipo.id;
+        this.registro.tipo2=this.registro.tipo.tipo;
+        this.registro.tipo=this.registro.tipo.nombre;
+        this.$axios.post(process.env.API+'/modificar',this.registro).then(res=>{
+          // console.log(res.data)
+          this.misregistros()
+          this.registro={}
+          this.minumero();
+          this.mod=false;
+          this.boolcrear=true
+          // this.$q.loading.hide()
+        })
+      }
+
     },
     modificar(re){
-      console.log(re);
+      this.boolcrear=false
+      // console.log(re);
       this.registro.re;
       this.registro.id=re.id;
       this.registro.ci=re.ci;
@@ -354,27 +382,27 @@ export default {
       this.mod=true;
     },
     actualizar(){
-      if (this.registro.tipo=='' || this.registro.tipo==undefined){
-        this.$q.notify({
-          color:'red',
-          icon:'error',
-          message:'Tienes que selecionar tipo de tramite'
-        })
-        return false
-      }
-      // console.log(this.registro)
-      this.$q.loading.show()
-      this.registro.tipo_id=this.registro.tipo.id;
-      this.registro.tipo2=this.registro.tipo.tipo;
-      this.registro.tipo=this.registro.tipo.nombre;
-      this.$axios.post(process.env.API+'/modificar',this.registro).then(res=>{
-        console.log(res.data)
-        this.misregistros()
-        this.registro={}
-        this.minumero();
-        this.mod=false;
-        // this.$q.loading.hide()
-      })
+      // if (this.registro.tipo=='' || this.registro.tipo==undefined){
+      //   this.$q.notify({
+      //     color:'red',
+      //     icon:'error',
+      //     message:'Tienes que selecionar tipo de tramite'
+      //   })
+      //   return false
+      // }
+      // // console.log(this.registro)
+      // this.$q.loading.show()
+      // this.registro.tipo_id=this.registro.tipo.id;
+      // this.registro.tipo2=this.registro.tipo.tipo;
+      // this.registro.tipo=this.registro.tipo.nombre;
+      // this.$axios.post(process.env.API+'/modificar',this.registro).then(res=>{
+      //   // console.log(res.data)
+      //   this.misregistros()
+      //   this.registro={}
+      //   this.minumero();
+      //   this.mod=false;
+      //   // this.$q.loading.hide()
+      // })
     }
   }
 
