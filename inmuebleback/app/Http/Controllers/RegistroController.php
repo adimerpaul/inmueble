@@ -17,6 +17,12 @@ class RegistroController extends Controller
 //        return $tipo;
         return Registro::with('user')->where('tipo2',$tipo)->get();
     }
+
+    public function reportodo(){
+        //        return $tipo;
+                return Registro::with('user')->get();
+    }
+
     public function detallesdia(Request $request)
     {
         return $request;

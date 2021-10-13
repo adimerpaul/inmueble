@@ -148,7 +148,25 @@
           </q-item-section>
         </q-item>
 
+        <q-item
+          v-if="$store.getters['login/isLoggedIn']"
+          clickable
+          exact
+          to="rephistorial"
+        >
+          <q-item-section
+            avatar
+          >
+            <q-icon name="code" />
+          </q-item-section>
 
+          <q-item-section>
+            <q-item-label>Reporte Total </q-item-label>
+            <q-item-label caption>
+              Reportes Tramites
+            </q-item-label>
+          </q-item-section>
+        </q-item>
 
 
         <q-item

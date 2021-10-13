@@ -3,6 +3,7 @@ import Registro from "pages/Registro";
 import History from "pages/History";
 import HistorialUser from "pages/HistorialUser";
 import Reporte from "pages/Reporte";
+import Rephistorial from "pages/Rephistorial";
 const routes = [
   {
     path: '/',
@@ -14,6 +15,7 @@ const routes = [
       { path: 'history', component: History,meta: {requiresAuth: true} },
       { path: 'historyuser', component: HistorialUser,meta: {requiresAuth: true} },
       { path: 'reporte', component: Reporte,meta: {requiresAuth: true} },
+      { path: 'rephistorial', component: Rephistorial,meta: {requiresAuth: true} },
     ]
   },
 
