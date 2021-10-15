@@ -14,6 +14,7 @@
   <table id="example" class="display" style="width:100%">
     <thead>
     <tr>
+      <th>num</th>
       <th>#</th>
       <th>Ci</th>
       <th>Contribuyente</th>
@@ -31,6 +32,7 @@
     </thead>
     <tbody>
     <tr v-for="(re,index) in registros" :key="index">
+      <td>{{index + 1 }}</td>
       <td>{{re.num}}</td>
       <td>{{re.ci}}</td>
       <td>{{re.contribuyente}}</td>
