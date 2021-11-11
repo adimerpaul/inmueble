@@ -15,7 +15,7 @@
           {{$store.state.login.user.name}}
         </q-toolbar-title>
 
-        <div> Inmuebles v{{ $q.version }}</div>
+        <div> <b>RITI</b> Registro Interno de Tramites en Inmuebles</div>
       </q-toolbar>
     </q-header>
 

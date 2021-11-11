@@ -13,6 +13,7 @@ class Registro extends Model
         'ci',
         'contribuyente',
         'numero',
+        'numform',
         'numtramite',
         'numhoja',
         'lugar',

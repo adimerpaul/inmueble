@@ -97,12 +97,13 @@
             <q-form class="q-mb-xs" @submit.prevent="agregar">
               <div class="row">
 <!--                <div class="col-1"><q-input  outlined label="num" v-model="registro.num" /></div>-->
-                <div class="col-6 col-sm-1"><q-input  outlined label="ci" v-model="registro.ci" @keyup="buscarcontribuyente" required/></div>
-                <div class="col-6 col-sm-2"><q-input  outlined label="contribuyente" v-model="registro.contribuyente" required style="text-transform: uppercase"/></div>
-                <div class="col-6 col-sm-1"><q-input  outlined label="numero" v-model="registro.numero" /></div>
-                <div class="col-6 col-sm-1"><q-input  outlined label="numtramite" v-model="registro.numtramite" /></div>
-                <div class="col-6 col-sm-1"><q-input  outlined label="numhoja" v-model="registro.numhoja" /></div>
-                <div class="col-6 col-sm-1"><q-input  outlined label="lugar" v-model="registro.lugar" style="text-transform: uppercase"/></div>
+                <div class="col-6 col-sm-1"><q-input  dense outlined label="ci" v-model="registro.ci" @keyup="buscarcontribuyente" required/></div>
+                <div class="col-6 col-sm-2"><q-input  dense outlined label="contribuyente" v-model="registro.contribuyente" required style="text-transform: uppercase"/></div>
+                <div class="col-6 col-sm-1"><q-input  dense outlined label="numero" v-model="registro.numero" /></div>
+                <div class="col-6 col-sm-1"><q-input  dense outlined label="numform" v-model="registro.numform" /></div>
+                <div class="col-6 col-sm-1"><q-input  dense  outlined label="numtramite" v-model="registro.numtramite" /></div>
+                <div class="col-6 col-sm-1"><q-input  dense outlined label="numhoja" v-model="registro.numhoja" /></div>
+                <div class="col-6 col-sm-1"><q-input  dense outlined label="lugar" v-model="registro.lugar" style="text-transform: uppercase"/></div>
                 <div class="col-6 col-sm-1">
 <!--                  <q-input  outlined label="tipo" v-model="registro.tipo" />-->
                   <q-select outlined :options="tipos" label="Tramite" v-model="registro.tipo" option-label="nombre" required/>
@@ -146,6 +147,7 @@
                 <th>Ci</th>
                 <th>Contribuyente</th>
                 <th>Num27</th>
+                <th>NumForm</th>
                 <th>Numtramite</th>
                 <th>Numhoja</th>
                 <th>Lugar</th>
@@ -164,6 +166,7 @@
                 <td>{{re.ci}}</td>
                 <td>{{re.contribuyente}}</td>
                 <td>{{re.numero}}</td>
+                <td>{{re.numform}}</td>
                 <td>{{re.numtramite}}</td>
                 <td>{{re.numhoja}}</td>
                 <td>{{re.lugar}}</td>
@@ -374,6 +377,7 @@ export default {
       this.registro.ci=re.ci;
       this.registro.contribuyente=re.contribuyente;
       this.registro.numero=re.numero;
+      this.registro.numform=re.numform;
       this.registro.numtramite=re.numtramite;
       this.registro.numhoja=re.numhoja
       this.registro.lugar=re.lugar

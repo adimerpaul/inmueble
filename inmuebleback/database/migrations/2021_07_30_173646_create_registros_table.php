@@ -19,6 +19,7 @@ class CreateRegistrosTable extends Migration
             $table->string('contribuyente');
             $table->string('ci');
             $table->string('numero')->default('')->nullable();
+            $table->string('numform')->default('')->nullable();
             $table->string('numtramite')->default('')->nullable();
             $table->string('numhoja')->default('')->nullable();
             $table->string('lugar')->default('')->nullable();

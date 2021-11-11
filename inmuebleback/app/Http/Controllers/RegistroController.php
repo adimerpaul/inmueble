@@ -111,6 +111,7 @@ class RegistroController extends Controller
         $registro->ci=$request->ci;
         $registro->contribuyente=strtoupper($request->contribuyente);
         $registro->numero=$request->numero;
+        $registro->numform=$request->numform;
         $registro->numtramite=$request->numtramite;
         $registro->numhoja=$request->numhoja;
         $registro->lugar=strtoupper($request->lugar);
@@ -148,6 +149,7 @@ class RegistroController extends Controller
             $registro->ci=$request->ci;
             $registro->contribuyente=strtoupper($request->contribuyente);
             $registro->numero=$request->numero;
+            $registro->numform=$request->numform;
             $registro->numtramite=$request->numtramite;
             $registro->numhoja=$request->numhoja;
             $registro->lugar=strtoupper($request->lugar);

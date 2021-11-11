@@ -54,6 +54,7 @@
                 <th>Ci</th>
                 <th>Contribuyente</th>
                 <th>Num27</th>
+                <th>NumForm</th>
                 <th>Numtramite</th>
                 <th>Numhoja</th>
                 <th>Lugar</th>
@@ -71,6 +72,7 @@
                 <td>{{re.ci}}</td>
                 <td>{{re.contribuyente}}</td>
                 <td>{{re.numero}}</td>
+                <td>{{re.numform}}</td>
                 <td>{{re.numtramite}}</td>
                 <td>{{re.numhoja}}</td>
                 <td>{{re.lugar}}</td>
